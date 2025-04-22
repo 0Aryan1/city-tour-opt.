@@ -29,7 +29,8 @@ An interactive web project built with **HTML, CSS & JavaScript** to simplify and
 ## 📸 Demo Preview
 
 | Delhi | Bangalore | Uttarakhand |
-![Uploading Screenshot 2025-04-22 at 11.03.55 PM.png…]()
+<img width="1256" alt="Screenshot 2025-04-22 at 11 03 55 PM" src="https://github.com/user-attachments/assets/ea9a90d5-5f9e-441f-92dd-a1a7de73db2a" />
+.55 PM.png…]()
 
 
 ---
