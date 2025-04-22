@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Tour Navigation System</title>
+   <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <h2>PLEASE WAIT</h2>
+        <p>SYSTEM IS LOADING</p>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <button class="btn" id="startBtn">Start Now</button>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <header>
+            <h1>CITY TOUR NAVIGATION OPTIMISATION SYSTEM</h1>
+            <p>Find the best routes and transportation for your city exploration</p>
+        </header>
+        
+        <!-- Welcome Screen -->
+        <div class="welcome-screen" id="welcomeScreen">
+            <div class="welcome-title">
+                <h2>WELCOME TO</h2>
+                <h2>CITY TOUR NAVIGATION OPTIMISATION SYSTEM</h2>
+            </div>
+            <p>Plan your journey, find optimal routes, and explore cities efficiently</p>
+            <button class="btn" id="exploreBtn" style="margin-top: 30px;">Explore Now</button>
+        </div>
+        
+        <!-- City Selection Screen -->
+        <div class="city-selection" id="citySelection">
+            <h2>Select Your City</h2>
+            <p>Choose the city you want to explore from our database</p>
+            
+            <div class="city-grid">
+                <div class="city-card" data-city="delhi">
+                    <img src="11.jpeg" alt="Delhi">
+                    <div class="city-info">
+                        <h3>Delhi</h3>
+                        <p>Explore the national capital with historical monuments, cultural heritage sites, and vibrant markets.</p>
+                    </div>
+                </div>
+                
+                <div class="city-card" data-city="bangalore">
+                    <img src="12.png" alt="Bangalore">
+                    <div class="city-info">
+                        <h3>Bangalore</h3>
+                        <p>Discover the Silicon Valley of India with its pleasant climate, beautiful gardens, and tech hubs.</p>
+                    </div>
+                </div>
+                
+                <div class="city-card" data-city="uttrakhand">
+                    <img src="13.jpg" alt="Uttarakhand">
+                    <div class="city-info">
+                        <h3>Uttarakhand</h3>
+                        <p>Experience the natural beauty of the Himalayas with sacred rivers, pilgrimage sites, and wildlife sanctuaries.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Locations Screen -->
+        <div class="locations-screen" id="locationsScreen">
+            <h2>Places to Visit in <span id="selectedCityName">City</span></h2>
+            <p>Select your current location from the list below</p>
+            
+            <div class="locations-list" id="locationsList">
+                <!-- Locations will be populated dynamically -->
+            </div>
+            
+            <button class="back-btn" id="backToCities">Back to Cities</button>
+        </div>
+        
+        <!-- Navigation Options Screen -->
+        <div class="navigation-options" id="navigationOptions">
+            <h2>Navigation Options</h2>
+            <p>What would you like to do in <span id="currentLocationName">location</span>?</p>
+            
+            <div class="options-grid">
+                <div class="option-card" id="optionTravel">
+                    <i class="fas fa-route"></i>
+                    <h3>Travel to Another Location</h3>
+                    <p>Find all possible paths from your current location to another destination</p>
+                </div>
+                
+                <div class="option-card" id="optionVisitAll">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Visit All Places</h3>
+                    <p>Get the optimal route to visit all places in the city</p>
+                </div>
+                
+                <div class="option-card" id="optionTransport">
+                    <i class="fas fa-car"></i>
+                    <h3>Find Transportation</h3>
+                    <p>Get information about available drivers at your current location</p>
+                </div>
+            </div>
+            
+            <button class="back-btn" id="backToLocations">Back to Locations</button>
+        </div>
+        
+        <!-- Pathfinding Screen -->
+        <div class="pathfinding-screen" id="pathfindingScreen">
+            <h2>Find Routes</h2>
+            
+            <div class="location-selection">
+                <div class="location-dropdown">
+                    <label for="fromLocation">From:</label>
+                    <select id="fromLocation" disabled>
+                        <!-- Populated dynamically -->
+                    </select>
+                </div>
+                
+                <div class="location-dropdown">
+                    <label for="toLocation">To:</label>
+                    <select id="toLocation">
+                        <!-- Populated dynamically -->
+                    </select>
+                </div>
+            </div>
+            
+            <div class="map-visualization" id="mapVisualization">
+                <!-- Map will be generated here -->
+            </div>
+            
+            <div class="path-result" id="pathResult">
+                <h3>All Available Paths</h3>
+                <div id="allPaths">
+                    <!-- Paths will be populated dynamically -->
+                </div>
+                
+                <div class="stop-selection" id="stopSelection" style="display: none;">
+                    <h3>Add Stops</h3>
+                    <p>Select locations you want to visit between your source and destination</p>
+                    
+                    <div class="location-dropdown">
+                        <select id="stopSelect">
+                            <!-- Options will be populated dynamically -->
+                        </select>
+                        <button class="btn" id="addStopBtn" style="margin-top: 10px;">Add Stop</button>
+                    </div>
+                    
+                    <div class="selected-stops" id="selectedStops">
+                        <!-- Selected stops will appear here -->
+                    </div>
+                    
+                    <button class="btn" id="findPathWithStopsBtn" style="margin-top: 20px;">Find Paths with Stops</button>
+                </div>
+                
+                <button class="btn" id="findShortestBtn" style="margin-top: 20px;">Find Shortest Path</button>
+                <button class="btn" id="addStopsBtn" style="margin-top: 20px;">Add Stops</button>
+            </div>
+            
+            <button class="back-btn" id="backToOptions">Back to Options</button>
+        </div>
+        
+        <!-- All Locations Screen -->
+        <div class="all-locations-screen" id="allLocationsScreen">
+            <h2>Optimal Route to Visit All Places</h2>
+            <p>Starting from <span id="startingPoint">location</span></p>
+            
+            <div class="map-visualization" id="allLocationsMap">
+                <!-- Map will be generated here -->
+            </div>
+            
+            <div class="path-result">
+                <h3>Recommended Route</h3>
+                <div id="optimalPath" class="path-item">
+                    <!-- Optimal path will be shown here -->
+                </div>
+                <p id="totalDistance" style="margin-top: 15px; font-weight: bold;"></p>
+            </div>
+            
+            <button class="back-btn" id="backToOptionsFromAll">Back to Options</button>
+        </div>
+        
+        <!-- Driver Info Screen -->
+        <div class="driver-info-screen" id="driverInfoScreen">
+            <h2>Available Drivers at <span id="driverLocationName">location</span></h2>
+            
+            <div id="driversList">
+                <!-- Drivers will be populated dynamically -->
+            </div>
+            
+            <button class="back-btn" id="backToOptionsFromDrivers">Back to Options</button>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2025 City Tour Navigation Optimisation System | Created by Aryan Agarwal</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
