@@ -56,7 +56,3 @@ This project demonstrates the use of **Data Structures & Algorithms** for real-w
 
 **Aryan Agarwal**  
 *Crafted as part of a DSA project with a modern web experience focus.*
-
----
-
-Let me know if you want me to generate a polished markdown file for you!
